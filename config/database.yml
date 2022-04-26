@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: calendar_production
-  username: calendar
-  password: <%= ENV['CALENDAR_DATABASE_PASSWORD'] %>
+  url: <%= ENV['CALENDAR_DATABASE_URL'] %>

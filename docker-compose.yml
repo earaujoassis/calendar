@@ -1,0 +1,46 @@
+version: '3.5'
+
+networks:
+  projects:
+    name: quatrolabs-projects-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.177.57.0/24
+
+services:
+  calendar-postgres:
+    image: 'postgres:13.6'
+    container_name: calendar-postgres
+    hostname: calendar-postgres
+    expose:
+      - "5432"
+    restart: always
+    volumes:
+      - calendar-postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: calendar_user
+      POSTGRES_PASSWORD: hV58W3OysxmAwPan
+      POSTGRES_DB: calendar_production
+    networks:
+      - projects
+
+  calendar-app:
+    build:
+      context: .
+    container_name: calendar
+    image: calendar
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - projects
+    volumes:
+      - calendar-web-public:/app/web/public
+    environment:
+      - CALENDAR_DATABASE_URL="postgres://calendar_user:hV58W3OysxmAwPan@calendar-postgres/calendar_production"
+      - SECRET_KEY_BASE="1aee05ca87b7fcc38022d6a35ca53924f867df1547f287c4810db6096a575b30ff5c47fc9817b31930e1aa3e3ec31b95dc90fb9b4e657cc8b679159bf3f65d38"
+
+volumes:
+  calendar-postgres-data:
+  calendar-web-public:
