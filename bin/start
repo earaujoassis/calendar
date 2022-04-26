@@ -2,5 +2,5 @@
 
 set -xe
 
-bin/rails db:migrate RAILS_ENV=$RAILS_ENV
+bin/rails db:migrate db:seed RAILS_ENV=$RAILS_ENV
 bin/rails "$@"

@@ -10,7 +10,7 @@ Setup a local development enviroment through the following instructions:
 2. Install `bundler` and `rails` through the following command: `gem install rails bundler`
 3. Install project dependencies: `bundle install`
 4. Provide a PostgreSQL server for local development (PostgreSQL 13.x)
-5. Test your local environment through the following command: `bin/rails db:create db:migrate db:seed && bin/rails test`
+5. Test your local environment through the following command: `bin/rails db:setup && bin/rails test`
 6. The server can be started through the following command: `bin/rails server`
 
 ## Deployment through Docker

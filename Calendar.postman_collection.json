@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "bbad031b-2adf-46ac-b046-0b4e47732b33",
+		"name": "Calendar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create events",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event\": {\n        \"name\": \"Meeting\",\n        \"day\": 10,\n        \"month\": 4,\n        \"year\": 2022\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/events?day=25&month=12&year=2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"events"
+					],
+					"query": [
+						{
+							"key": "day",
+							"value": "25"
+						},
+						{
+							"key": "month",
+							"value": "12"
+						},
+						{
+							"key": "year",
+							"value": "2022"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
